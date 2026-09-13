@@ -65,7 +65,7 @@ def show_monthly_summary(tracker):
 def main():
  tracker = load_data()
  while True:
-    choice = input("\n=== Personal Expense Tracker ===\n1. Add Expense\n2. Show Total Spent\n3. Show Spending by Category\n4. Delete an Expense\n5. Show Monthly Summary\n6. Exit\nChoose an option (1-4): ")
+    choice = input("\n=== Personal Expense Tracker ===\n1. Add Expense\n2. Show Total Spent\n3. Show Spending by Category\n4. Delete an Expense\n5. Show Monthly Summary\n6. Exit\nChoose an option (1-6): ")
     if choice == "1":
        add_expense(tracker)
     elif choice == "2":
