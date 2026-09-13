@@ -1,3 +1,3 @@
-Amount: 100.0, Category: meat, Notes: 
-Amount: 50.0, Category: fish, Notes: stinky
-Amount: 30.0, Category: drinks, Notes: pint
+500.0|rent|cheap
+20.0|gatorade|highly caloric
+50.0|milk tea|too sweet
