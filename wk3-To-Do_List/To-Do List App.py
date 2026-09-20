@@ -65,8 +65,6 @@ def main():
         elif (choice == "4"):
             print("Exiting...")
             break
-        elif (choice == "5"):
-            print_list(tracker)
         else:
             print("Invalid input.")
 main()
