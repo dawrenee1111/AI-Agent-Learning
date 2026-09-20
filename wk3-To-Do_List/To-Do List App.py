@@ -55,7 +55,7 @@ def delete_task(tracker):
 def main():
     tracker = load_tasks()
     while True:
-        choice = input("\n=== MENU ===\n1. Add task\n2. Mark task as done\n3. Delete task(s)\n4. Exit\n5. Print list\nChoose an option (1-4): ")
+        choice = input("\n=== MENU ===\n1. Add task\n2. Mark task as done\n3. Delete task(s)\n4. Exit\nChoose an option (1-4): ")
         if (choice == "1"):
             add_task(tracker)
         elif (choice == "2"):
