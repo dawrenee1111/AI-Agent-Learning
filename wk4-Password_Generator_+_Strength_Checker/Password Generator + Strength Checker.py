@@ -23,7 +23,7 @@ def check_strength(password):
         elif char in string.digits:
             has_digit = True
     score = sum([length>=8, has_lower, has_capital, has_punctuation, has_digit])
-    if score < 2:
+    if score <= 2:
         return "Weak"
     elif score <=4:
         return "Moderate"
