@@ -49,7 +49,7 @@ def main():
             response = requests.get(url)
             if response.status_code != 200:
                 print("City not found. Please check the spelling and try again.")
-                return
+                continue
             else:
                 favorites.append(fav_city)
         elif choice == "3":
