@@ -1,4 +1,5 @@
 import requests, json, string, random
+from datetime import datetime
 favorite_cities=[]
 favorite_passwords = []
 FILENAME = "/Users/Renee/Python/AI Agent Learning/wk7-Personal_Command-Line_Assistant_v1/TaskList.txt"
@@ -30,15 +31,15 @@ def load_data_4_expense_tracker():
                 line=line.strip()
                 if line:
                     parts = line.split("|")
-                    line_to_tracker = {"amount": float(parts[0]), "category": parts[1], "note": parts[2]}
+                    line_to_tracker = {"amount": float(parts[0]), "category": parts[1], "note": parts[2], "date": parts[3]}
                     tracker1.append(line_to_tracker)
     except FileNotFoundError:
        pass
     return tracker1
-def save_data(tracker1):
+def save_data_4_expense_tracker(tracker1):
    with open(FILENAME2, "w") as file:
       for item in tracker1:
-         line = f"{item['amount']}|{item['category']}|{item['note']}\n"
+         line = f"{item['amount']}|{item['category']}|{item['note']}|{item['date']}\n"
          file.write(line)
 def add_expense(tracker1):
     try:
@@ -48,9 +49,10 @@ def add_expense(tracker1):
        return
     category = input("Enter category: ").strip().lower()
     note = input("Enter any notes (optional): ").strip().lower()
-    line_of_tracker1 = {"amount":amount, "category":category, "note":note}
+    date_stamp = datetime.now().strftime("%m-%Y") 
+    line_of_tracker1 = {"amount":amount, "category":category, "note":note, "date":date_stamp}
     tracker1.append(line_of_tracker1)
-    save_data(tracker1)
+    save_data_4_expense_tracker(tracker1)
     print("Expense added and saved successfully!")
 def show_total(tracker1):
    total = sum(item["amount"] for item in tracker1)
@@ -70,7 +72,7 @@ def delete_expense_item(tracker1):
       choice = int(input("\nEnter which index of expense: ")) - 1
       if 0<=choice<len(tracker1):
          removed = tracker1.pop(choice)
-         save_data(tracker1)
+         save_data_4_expense_tracker(tracker1)
          print(f"Successfully deleted: ${removed['amount']:.2f} from '{removed['category'].capitalize()}'")
       else:
          print("Invalid selection number.")
@@ -114,16 +116,19 @@ def print_list(tracker):
       print(f"[{index+1}] {item['task']}? {item['completed']}")
 def mark_done(tracker):
     print_list(tracker)
-    choice = int(input("Enter which index of task to mark as done? "))-1
-    if 0<=choice<len(tracker):
-        if tracker[choice]["completed"] == "y":
-            print("This task has already been completed!")
+    try:
+        choice = int(input("Enter which index of task to mark as done? "))-1
+        if 0<=choice<len(tracker):
+            if tracker[choice]["completed"] == "y":
+                print("This task has already been completed!")
+            else:
+                tracker[choice]["completed"] = "y"
+                save_tasks(tracker)
+                print("Okay! Marked as done.")
         else:
-            tracker[choice]["completed"] = "y"
-            save_tasks(tracker)
-            print("Okay! Marked as done.")
-    else:
-        print("Invalid selection number.")
+            print("Invalid selection number.")
+    except ValueError:
+        print("Invalid selection numnber.")
 def delete_task(tracker):
     print_list(tracker)
     try:
