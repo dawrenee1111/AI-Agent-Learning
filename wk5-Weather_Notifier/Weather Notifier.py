@@ -3,7 +3,7 @@ def main():
     while True:
         city = input("Enter a city name (-1 to exit): ")
         if city == "-1":
-            break:
+            break
         api_key = "c674a98c9d54acfbf852231b11ed5d74"
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
         response = requests.get(url)
