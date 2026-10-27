@@ -23,7 +23,7 @@ def expense_tracker():
         elif choice == "2":
             show_total(expense_tracker)
         elif choice == "3":
-            show_total_by_specific_category()
+            show_total_by_specific_category(expense_tracker)
         elif choice == "4":
             delete_expense_item(expense_tracker)
         elif choice == "5":
@@ -49,9 +49,9 @@ def add_expense(expense_tracker):
 def show_total(expense_tracker):
    total = sum(item["amount"] for item in expense_tracker)
    print(f"Total spent is ${total:.2f}")
-def show_total_by_specific_category():
+def show_total_by_specific_category(expense_tracker):
     specific_category = input("Enter category: ").strip().lower()
-    total = sum(item["amount"] for item in v if item["category"] == specific_category)
+    total = sum(item["amount"] for item in expense_tracker if item["category"] == specific_category)
     if total == 0:
         print(f"No expenses found or recorded under '{specific_category}'.")
     else:
@@ -92,25 +92,29 @@ def add_task(task_tracker):
 def print_list(task_tracker):
     print("\n=== Current Tasks ===")
     if not task_tracker:
-        print("No expenses to delete.")
+        print("No tasks to delete.")
         return task_tracker
     for index, item in enumerate(task_tracker):
-      print(f"[{index+1}] {item['task']}? {item['completed']}")
+      if item['completed'] == True:
+          y_n = "done"
+      else:
+          y_n = "not yet done"
+      print(f"[{index+1}] {item['task']}? {y_n}")
 def mark_done(task_tracker):
     print_list(task_tracker)
     try:
         choice = int(input("Enter which index of task to mark as done? "))-1
         if 0<=choice<len(task_tracker):
-            if task_tracker[choice]["completed"] == "y":
+            if task_tracker[choice]["completed"] == True:
                 print("This task has already been completed!")
             else:
-                task_tracker[choice]["completed"] = "y"
+                task_tracker[choice]["completed"] = True
                 save_json(task_tracker, TASK_FILE)
                 print("Okay! Marked as done.")
         else:
             print("Invalid selection number.")
     except ValueError:
-        print("Invalid selection numnber.")
+        print("Invalid selection number.")
     return task_tracker
 def delete_task(task_tracker):
     print_list(task_tracker)
@@ -127,7 +131,7 @@ def delete_task(task_tracker):
 def to_do_list():
     task_tracker = load_json(TASK_FILE)
     while True:
-        choice = input("\n=== To-Do List ===\n1. Add task\n2. Mark task as done\n3. Delete task(s)\n4. Back to Main Menu\nChoose an option (1-4): ")
+        choice = input("\n=== To-Do List ===\n1. Add task\n2. Mark task as done\n3. Delete task\n4. Back to Main Menu\nChoose an option (1-4): ")
         if (choice == "1"):
             add_task(task_tracker)
         elif (choice == "2"):
@@ -233,7 +237,7 @@ def show_3_day_forecast(city):
             part1, part2 = item["dt_txt"].split(" ")
             date_list.append(part1)
     labels = ["Today", "Tomorrow", "The Day After Tomorrow"]
-    print(f"\n=== 3-Day Forecast for {city} ===")
+    print(f"\n=== 3-Day Forecast for {city_name} ===")
     for i in range(3):
         advice = get_clothing_suggestions(temp_list[i], description_list[i])
         print(f"{labels[i]}:\n\tDate: {date_list[i]}\n\tTemperature: {temp_list[i]} °C\n\tWeather: {description_list[i]}\n\tAdvice: {advice}")
@@ -276,4 +280,5 @@ def main():
             break
         else:
             print("Invalid choice. Please enter a number between 1 and 5.")
-main()
+if __name__ == "__main__":
+    main()
