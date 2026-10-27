@@ -1,4 +1,4 @@
-import requests, json, string, random, os, secrets
+import requests, json, string, os, secrets
 from datetime import datetime
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
 favorite_passwords = []
@@ -92,7 +92,7 @@ def add_task(task_tracker):
 def print_list(task_tracker):
     print("\n=== Current Tasks ===")
     if not task_tracker:
-        print("No tasks to delete.")
+        print("No tasks in to do list.")
         return task_tracker
     for index, item in enumerate(task_tracker):
       if item['completed'] == True:
