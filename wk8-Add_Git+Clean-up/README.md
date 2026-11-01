@@ -8,7 +8,7 @@ This code is for anyone really. It is a personal command-line assistant that get
     + delete expense entry
     + show total spent
     + show total spent in a specific category
-    + show a montly summary of spending
+    + show a monthly summary of spending
     + save and load expenses onto a separate file
 - **To-Do List:**
     + add tasks
@@ -34,13 +34,13 @@ This code is for anyone really. It is a personal command-line assistant that get
 ## Setup
 You first need to give the program an API key to check the weather.
 So in your terminal, enter:
-export OPENWEATHER_API_KEY="your_key_here"
+`export OPENWEATHER_API_KEY="your_key_here"`
 
 ## How to run
-[The command, in a code block. Your filename has spaces and a "+", so think
-about whether the command needs quotation marks.]
-Once you run the program, it will print this:
-```=== MENU ===
+First input `python3 "Add Git + Clean-up.py"` into the terminal to run the code.
+Then this will pop up:
+```
+=== MENU ===
 1. Expense Tracker
 2. To-do List
 3. Password Generator
@@ -48,10 +48,9 @@ Once you run the program, it will print this:
 5. Exit
 Choose an option (1-5): 
 ```
-Then just follow along and read the code. It's pretty explanatory.
+Enter a number 1 to 5, then it will lead you to another menu page for the different functions: expense tracker, to-do list, password generator, and weather forecast. Enter another number based on that menu system and enter anything that the code asks.
 
 ## Example
-If I wanted to make a task list for the day, I could just add my tasks in the morning then mark them done as I complete them throughout the day.
-
+If I wanted to add a task to buy milk, I would type "pick 2, choose Add task, type 'Buy milk'".
 ## Notes
 Expenses and tasks will be saved in a separate json file. However favorite cities and passwords will be saved in a list, so once you close the program, your favorites will be deleted.
