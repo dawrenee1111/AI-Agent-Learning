@@ -36,8 +36,10 @@ You first need to give the program an API key to check the weather.
 So in your terminal, enter:
 `export OPENWEATHER_API_KEY="your_key_here"`
 
+FYI: export only lasts for the current terminal window
+
 ## How to run
-First input `python3 "Add Git + Clean-up.py"` into the terminal to run the code.
+First input `cd wk8-Add_Git+Clean-up`. Then enter `python3 "Add Git + Clean-up.py"` into the terminal to run the code.
 Then this will pop up:
 ```
 === MENU ===
@@ -51,6 +53,7 @@ Choose an option (1-5):
 Enter a number 1 to 5, then it will lead you to another menu page for the different functions: expense tracker, to-do list, password generator, and weather forecast. Enter another number based on that menu system and enter anything that the code asks.
 
 ## Example
-If I wanted to add a task to buy milk, I would type "pick 2, choose Add task, type 'Buy milk'".
+To add a task, choose 2 (To-do List), then 1 (Add task), then type your task, like Buy milk.
+
 ## Notes
 Expenses and tasks will be saved in a separate json file. However favorite cities and passwords will be saved in a list, so once you close the program, your favorites will be deleted.
