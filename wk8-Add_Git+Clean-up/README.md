@@ -46,7 +46,8 @@ Once you run the program, it will print this:
 3. Password Generator
 4. Weather
 5. Exit
-Choose an option (1-5): ```
+Choose an option (1-5): 
+```
 Then just follow along and read the code. It's pretty explanatory.
 
 ## Example
